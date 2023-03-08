@@ -28,8 +28,8 @@ int main()
             matrice[i][j] = rand() % 10;
 
 
-            // faccio la somma  di tutti numeri della matricee
-            somma += matrice[i][j];
+           
+            somma += matrice[i][j];  // faccio la somma  di tutti numeri della matricee
 
         }
     }
