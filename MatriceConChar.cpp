@@ -1,5 +1,5 @@
 //
-// Created by guea on 09/03/23.
+// Created by Guea on 09/03/23.
 //
 
 #include <iostream>
@@ -9,9 +9,9 @@ using namespace std;
 
 int main()
 {
-    int rows = 20;
-    int columns = 20;
-    string words[] = {"ciao", "word", "apple", "barbabietole", "oshio" };
+    int rows = 18;
+    int columns = 18;
+    string words[] = {"Buongiorno", "serge", "apple", "mamma", "oshio" };
     char empty = ' ';
 
 
@@ -30,7 +30,7 @@ int main()
 
     for (int index = 0; index < wordsLength; index++)
     {
-        if (index % 3 == 0)
+        if (index % 10 == 5)
         { // orizzontale
             if (words[index].length() > columns)
             {
@@ -68,7 +68,7 @@ int main()
                 }
             }
         }
-        else if (index % 3 == 1)
+        else if (index % 10 == 5)
         { // verticale
             if (words[index].length() > rows)
             {
@@ -108,10 +108,54 @@ int main()
         }
         else
         {
-            // cout << "diagonale" << endl;
+            { // diagonale sinistra verso in basso a destra
+
+                if (words[index].length() > rows)
+                {
+                    cout << "word " << words[index] << " is too long" << endl;
+                    continue;
+                }
+                else
+                {
+                    contatore++;
+                    int x = random() % (rows - words[index].length());
+                    int y = random() % (columns - words[index].length());
+
+                    while (matrix[x][y] != empty)
+                    {
+                        x = random() % (rows - words[index].length());
+                        y = random() % (columns - words[index].length());
+                    }
+
+                    for (int i = 0; i < words[index].length(); i++)
+                    {
+                        if (matrix[x + i][y + i] != empty)
+                        {
+                            x = random() % (rows - words[index].length());
+                            y = random() % (columns - words[index].length());
+                            i = 0;
+                        }
+                    }
+                    for (int i = 0; i < words[index].length(); i++)
+                         if (matrix[x + i][y + i] != empty)
+                        {
+                            x = random() % (rows - words[index].length());
+                            y = random() % (columns - words[index].length());
+                            i = 0;
+                        }
+
+                    for (int i = 0; i < words[index].length(); i++)
+                    {
+                        matrix[x + i][y + i] = words[index][i];
+                        // cout << "index: " << index << " i: " << i << " x: " << x << " y: " << y << endl;
+                        // cout << "matrix[" << x << "][" << y + i << "] = " << words[index][i] << endl;
+                        // cout << "result: " << matrix[x][y + i] << endl;
+                    }
+                }
+            }
+             cout << "diagonale" << endl;
         }
     }
-
 
     // // fill the matrix with random char if empty
     // for (int i = 0; i < rows; i++)

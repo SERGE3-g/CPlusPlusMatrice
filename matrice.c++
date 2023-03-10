@@ -1,5 +1,5 @@
 //
-// Created by guea on 08/03/23.
+// Created by Guea on 08/03/23.
 //
 #include <array>
 #include <iostream>
